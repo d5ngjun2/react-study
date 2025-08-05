@@ -1,6 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { IoHome } from "react-icons/io5";
+import { FaClipboardList } from "react-icons/fa";
+import { LuListTodo } from "react-icons/lu";
+import { IoMdLogIn } from "react-icons/io";
+import { BsFillSignIntersectionFill } from "react-icons/bs";
 
 const Header = () => {
   return (
@@ -12,18 +17,23 @@ const Header = () => {
       </HeaderLink>
       <ItemGroup>
         <HeaderLink to="/">
+          <IoHome />
           <Item>Home</Item>
         </HeaderLink>
         <HeaderLink to="/board">
+          <FaClipboardList />
           <Item>Board</Item>
         </HeaderLink>
         <HeaderLink to="/todolist">
+          <LuListTodo />
           <Item>ToDoList</Item>
         </HeaderLink>
         <HeaderLink to="/login">
+          <IoMdLogIn />
           <Item>Login</Item>
         </HeaderLink>
         <HeaderLink to="/signup">
+          <BsFillSignIntersectionFill />
           <Item>SignUp</Item>
         </HeaderLink>
       </ItemGroup>
@@ -50,14 +60,17 @@ const ItemGroup = styled.div`
 `;
 
 const Item = styled.div`
-  margin: 0 10px;
+  margin: 0 12px;
+  line-height: 1; // 아이콘과 텍스트 간격 조정
 `;
 
 const HeaderLink = styled(Link)`
   text-decoration: none;
   color: white;
+  align-items: center;
   &:hover {
     color: #61dafb;
+    transition: color 0.3s ease;
   }
 `;
 
