@@ -5,10 +5,19 @@ import useSignUpForm from "../hooks/useSignUpForm";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const SignUp = () => {
   const { signUpSchema } = useSignUpForm();
   const navigate = useNavigate();
+
+  const [isCapsLockOn, setIsCapsLockOn] = useState(false);
+
+  const checkCapsLock = (event) => {
+    const isCapsLockOn = event.getModifierState("CapsLock");
+    setIsCapsLockOn(isCapsLockOn);
+  };
+
   const {
     register,
     handleSubmit,
@@ -28,6 +37,8 @@ const SignUp = () => {
             type="text"
             id="id"
             placeholder="아이디를 입력해주세요."
+            onKeyUp={(ev) => checkCapsLock(ev)}
+            onAbort={(ev) => checkCapsLock(ev)}
           />
           <ErrorText>{errors.id?.message}</ErrorText>
         </InputWrapper>
@@ -38,6 +49,8 @@ const SignUp = () => {
             type="text"
             id="name"
             placeholder="이름을 입력해주세요."
+            onKeyUp={(ev) => checkCapsLock(ev)}
+            onAbort={(ev) => checkCapsLock(ev)}
           />
           <ErrorText>{errors.name?.message}</ErrorText>
         </InputWrapper>
@@ -48,6 +61,8 @@ const SignUp = () => {
             type="password"
             id="password"
             placeholder="비밀번호를 입력해주세요."
+            onKeyUp={(ev) => checkCapsLock(ev)}
+            onAbort={(ev) => checkCapsLock(ev)}
           />
           <ErrorText>{errors.password?.message}</ErrorText>
         </InputWrapper>
@@ -58,6 +73,8 @@ const SignUp = () => {
             type="password"
             placeholder="비밀번호를 다시 입력해주세요."
             id="confirmPassword"
+            onKeyUp={(ev) => checkCapsLock(ev)}
+            onAbort={(ev) => checkCapsLock(ev)}
           />
           <ErrorText>{errors.confirmPassword?.message}</ErrorText>
         </InputWrapper>
@@ -68,9 +85,14 @@ const SignUp = () => {
             type="email"
             id="email"
             placeholder="이메일을 입력해주세요."
+            onKeyUp={(ev) => checkCapsLock(ev)}
+            onAbort={(ev) => checkCapsLock(ev)}
           />
           <ErrorText>{errors.email?.message}</ErrorText>
         </InputWrapper>
+        <CapsLockWarning>
+          {isCapsLockOn ? "Caps Lock이 켜져 있습니다." : ""}
+        </CapsLockWarning>
 
         <ButtonGroup>
           <SignUpButton type="submit">회원가입</SignUpButton>
@@ -151,6 +173,14 @@ const ButtonGroup = styled.div`
   align-items: center;
   margin: 0;
   width: 83%;
+`;
+
+const CapsLockWarning = styled.p`
+  margin: 0;
+  padding: 0;
+  color: #000000;
+  font-size: 12px;
+  margin-bottom: 10px;
 `;
 
 const NoAccount = styled.p`

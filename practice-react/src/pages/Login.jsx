@@ -2,15 +2,27 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { set } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
 
   const [isCapsLockOn, setIsCapsLockOn] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
 
   const checkCapsLock = (event) => {
     const isCapsLockOn = event.getModifierState("CapsLock");
     setIsCapsLockOn(isCapsLockOn);
+  };
+
+  const handleLogin = (event) => {
+    if (event) {
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
+      toast.error("로그인에 실패했습니다. 아이디와 비밀번호를 확인해주세요.");
+    }
   };
 
   return (
@@ -19,7 +31,12 @@ const Login = () => {
         <h2>로그인</h2>
         <InputWrapper>
           <Label>아이디</Label>
-          <FormInput type="text" placeholder="아이디를 입력해주세요." />
+          <FormInput
+            type="text"
+            placeholder="아이디를 입력해주세요."
+            onKeyUp={(ev) => checkCapsLock(ev)}
+            onAbort={(ev) => checkCapsLock(ev)}
+          />
         </InputWrapper>
         <InputWrapper>
           <Label>비밀번호</Label>
@@ -35,7 +52,9 @@ const Login = () => {
         </InputWrapper>
 
         <ButtonGroup>
-          <LoginButton type="submit">로그인</LoginButton>
+          <LoginButton type="submit" onClick={(ev) => handleLogin(ev)}>
+            로그인
+          </LoginButton>
           <NoAccount>비밀번호를 잊으셨나요?</NoAccount>
         </ButtonGroup>
       </LoginContent>
