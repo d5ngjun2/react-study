@@ -27,7 +27,7 @@ const TodoList = () => {
 const MainContent = styled.div`
   display: flex;
   border-radius: 5px;
-  background-color: #ececec;
+  background-color: #ffffff;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -44,7 +44,7 @@ const CardGroup = styled.div`
 const TodoCard = styled.div`
   width: 500px;
   height: 300px;
-  background-color: #f7f7f7;
+  background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border: 1px solid #ccc;
   border-radius: 10px;

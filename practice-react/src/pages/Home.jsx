@@ -14,7 +14,7 @@ const Home = () => {
 const MainContent = styled.div`
   display: flex;
   border-radius: 5px;
-  background-color: #ececec;
+  background-color: #ffffff;
   justify-content: center;
   align-items: center;
   flex-direction: column;

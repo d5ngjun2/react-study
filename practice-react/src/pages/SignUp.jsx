@@ -106,7 +106,7 @@ const SignUp = () => {
 const MainContent = styled.div`
   display: flex;
   border-radius: 5px;
-  background-color: #ececec;
+  background-color: #ffffff;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -198,7 +198,7 @@ const NoAccount = styled.p`
 const SignUpContent = styled.form`
   width: 700px;
   height: 720px;
-  background-color: #f7f7f7;
+  background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   display: flex;

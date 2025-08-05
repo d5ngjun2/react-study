@@ -12,16 +12,19 @@ const Board = () => {
 
   return (
     <MainContent>
-      <MainDiv>자유게시판</MainDiv>
       <BoardTable>
+        <InputGroup>
+          <input type="text" placeholder="검색어 입력"></input>
+          <button>검색</button>
+        </InputGroup>
         <tbody>
-          <tr>
+          <TableTop>
             <td>날짜</td>
             <td>카테고리</td>
             <td>제목</td>
             <td>작성자</td>
             <td>조회수</td>
-          </tr>
+          </TableTop>
           <tr>
             <td>2025-08-01</td>
             <td>공지사항</td>
@@ -30,10 +33,10 @@ const Board = () => {
             <td>132</td>
           </tr>
         </tbody>
+        <BtnGroup>
+          <AddBoardBtn onClick={AddBoard}>게시글 작성</AddBoardBtn>
+        </BtnGroup>
       </BoardTable>
-      <BtnGroup>
-        <AddBoardBtn onClick={AddBoard}>게시글 작성</AddBoardBtn>
-      </BtnGroup>
     </MainContent>
   );
 };
@@ -41,7 +44,7 @@ const Board = () => {
 const MainContent = styled.div`
   display: flex;
   border-radius: 5px;
-  background-color: #ececec;
+  background-color: #ffffff;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -51,37 +54,71 @@ const MainContent = styled.div`
   box-sizing: border-box;
 `;
 
-const MainDiv = styled.div`
-  width: 800px;
-  display: flex;
-  margin: 0 auto;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-  padding: 20px;
-  margin: 10px;
-  background-color: rgb(255, 255, 255);
-  color: black;
-`;
-
 const BoardTable = styled.table`
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-  padding: 20px;
+  border: 1px solid #dfdfdf;
+  border-radius: 10px;
+  padding: 15px;
   margin: 0 auto;
   color: black;
   background-color: #ffffff;
-  justify-content: center;
   width: 80%;
-  align-items: center;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 20px auto;
 
   td {
     padding: 20px;
     text-align: center;
     border: 1px solid #ddd;
-    font-size: 16px;
+    font-size: 15px;
     cursor: pointer;
+  }
+`;
+
+const InputGroup = styled.div`
+  margin-top: 20px;
+  display: flex;
+  padding: 10px;
+  justify-content: flex-end;
+  margin-left: auto;
+  margin-bottom: 20px;
+
+  input {
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #dfdfdf;
+    margin-right: 10px;
+
+    &:focus {
+      border-color: #a3a3a3;
+      outline: none;
+    }
+  }
+
+  button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    border: 2px solid #dfdfdf;
+    color: #000000;
+    cursor: pointer;
+    &:hover {
+      background-color: #e9e9e9;
+    }
+  }
+`;
+
+const TableTop = styled.tr`
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: black;
+
+  td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 15px;
   }
 `;
 
@@ -91,38 +128,16 @@ const BtnGroup = styled.div`
 `;
 
 const AddBoardBtn = styled.button`
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
   width: 120px;
   font-size: 12px;
   height: 40px;
   margin: 20px auto;
-  background-color: #4caf50;
-  color: white;
-  border: none;
+  background-color: #ffffff;
+  border: 2px solid #dfdfdf;
+  color: #000000;
 
   &:hover {
-    background-color: #45a049;
-    border-style: none;
-    outline: none;
-    box-shadow: none;
-    transform: scale(1.02);
-  }
-`;
-
-const NavigateBtn = styled.button`
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-  font-size: 12px;
-  width: 120px;
-  height: 40px;
-  margin: 20px 20px;
-  background-color: #2196f3;
-  color: white;
-  border: none;
-
-  &:hover {
-    background-color: #0b7dda;
-    cursor: pointer;
-    transform: scale(1.02);
+    background-color: #e9e9e9;
   }
 `;
 

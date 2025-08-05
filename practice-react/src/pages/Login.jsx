@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { set } from "react-hook-form";
+import { IoMdLogIn } from "react-icons/io";
 import { toast } from "react-toastify";
 
 const Login = () => {
@@ -29,6 +30,7 @@ const Login = () => {
     <MainContent>
       <LoginContent>
         <h2>로그인</h2>
+        <IoMdLogIn size={60} />
         <InputWrapper>
           <Label>아이디</Label>
           <FormInput
@@ -65,7 +67,7 @@ const Login = () => {
 const MainContent = styled.div`
   display: flex;
   border-radius: 5px;
-  background-color: #ececec;
+  background-color: #ffffff;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -157,7 +159,7 @@ const NoAccount = styled.p`
 const LoginContent = styled.form`
   width: 700px;
   height: 600px;
-  background-color: #f7f7f7;
+  background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   display: flex;
