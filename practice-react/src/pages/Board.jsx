@@ -12,31 +12,35 @@ const Board = () => {
 
   return (
     <MainContent>
-      <BoardTable>
+      <BoardWrapper>
         <InputGroup>
           <input type="text" placeholder="검색어 입력"></input>
           <button>검색</button>
         </InputGroup>
-        <tbody>
-          <TableTop>
-            <td>날짜</td>
-            <td>카테고리</td>
-            <td>제목</td>
-            <td>작성자</td>
-            <td>조회수</td>
-          </TableTop>
-          <tr>
-            <td>2025-08-01</td>
-            <td>공지사항</td>
-            <td>시스템 점검 안내</td>
-            <td>관리자</td>
-            <td>132</td>
-          </tr>
-        </tbody>
+        <BoardTable>
+          <thead>
+            <TableTop>
+              <td>날짜</td>
+              <td>카테고리</td>
+              <td>제목</td>
+              <td>작성자</td>
+              <td>조회수</td>
+            </TableTop>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2025-08-01</td>
+              <td>공지사항</td>
+              <td>시스템 점검 안내</td>
+              <td>관리자</td>
+              <td>132</td>
+            </tr>
+          </tbody>
+        </BoardTable>
         <BtnGroup>
           <AddBoardBtn onClick={AddBoard}>게시글 작성</AddBoardBtn>
         </BtnGroup>
-      </BoardTable>
+      </BoardWrapper>
     </MainContent>
   );
 };
@@ -54,24 +58,34 @@ const MainContent = styled.div`
   box-sizing: border-box;
 `;
 
+const BoardWrapper = styled.div`
+  width: 80%;
+  margin: 20px auto;
+`;
+
 const BoardTable = styled.table`
   border: 1px solid #dfdfdf;
   border-radius: 10px;
   padding: 15px;
-  margin: 0 auto;
   color: black;
   background-color: #ffffff;
-  width: 80%;
+  width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  margin: 20px auto;
 
-  td {
+  td,
+  th {
     padding: 20px;
     text-align: center;
-    border: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border: 1px solid #dfdfdf;
     font-size: 15px;
     cursor: pointer;
+  }
+
+  th {
+    font-weight: bold;
+    background-color: #f2f2f2;
   }
 `;
 
@@ -125,6 +139,7 @@ const TableTop = styled.tr`
 const BtnGroup = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 `;
 
 const AddBoardBtn = styled.button`
