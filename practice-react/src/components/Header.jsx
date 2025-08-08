@@ -12,7 +12,7 @@ const Header = () => {
     <HeaderContent>
       <HeaderLink to="/">
         <Item>
-          <h2>My Application</h2>
+          <h2>Practice React⚛️</h2>
         </Item>
       </HeaderLink>
       <ItemGroup>
@@ -50,6 +50,12 @@ const HeaderContent = styled.div`
   justify-content: flex-start;
   padding-left: 32px;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+  }
 `;
 
 const ItemGroup = styled.div`
@@ -57,6 +63,13 @@ const ItemGroup = styled.div`
   justify-content: flex-end; // 오른쪽 정렬
   margin-left: auto; // 오른쪽으로 정렬
   padding-right: 32px; // 오른쪽 여백
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
+    padding-right: 0;
+  }
 `;
 
 const Item = styled.div`
