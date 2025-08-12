@@ -1,0 +1,33 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+    </head>
+    <body>
+       <h1>스코프 공부 콘솔창 확인</h1>
+    </body>
+    <script type="text/javascript">
+    
+        // 전역변수, 스코프 공부용 코드
+        let a = 3;
+    
+        console.log("전역 변수 let 출력 : " + a);
+        
+        if (a > 2) {
+            let a = 10;
+            console.log("블록 스코프 let 출력 (10 출력 되어야 함.) : " + a);
+        }
+
+        function practice() {
+            let a = 23;
+            console.log("함수 스코프 let 출력 (23 출력 되어야 함) : " + a);
+        }
+
+        practice();
+
+        // let a = 4;
+        // console.log("이건 에러 나야 함 :" + a);
+
+    </script>
+    </html>

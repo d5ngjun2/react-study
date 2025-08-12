@@ -1,0 +1,19 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<body>
+    <div id="div1">
+        <h2>1번 클릭</h2>
+    </div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // TODO 1: 1번 클릭 시, 이벤트 - on함수 selector만 사용
+        // h2 태그 클릭 시 늘어날 전역변수 count 선언
+        let count = 0;
+        $("h2").on("click", function() {
+            // 클릭할때마다 count 값 증가
+            count ++;
+            // 변수를 h2 태그 안에 넣어서 출력 시키기 위해 `` 백틱 사용
+            $("#div1").append(`<h2>${count}-1번 클릭</h2>`);
+        })
+    });
+</script>
