@@ -1,0 +1,37 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<body>
+    <div>
+        셀렉트박스1: <select id="selectBox"></select>
+        셀렉트박스2: <select></select>
+    </div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        const option1 = "<option>첫번째</option>",
+              option2 = "<option>두번째</option>",
+              option3 = "<option>세번째</option>";
+    
+        // TODO 1: 위의 3개 옵션을 셀렉트박스1에 추가
+        // .append() : 선택한 요소의 자식 중 마지막에 삽입
+        $("#selectBox").append(option1, option2, option3); 
+
+        // TODO 2: 'Select 순번 0번째 공통옵션'을 모든 셀렉트박스에 추가 : 0은 select Box 들의 index값으로 셀렉트박스1은 0, 셀렉트박스2는 1
+        const commonOption = "<option>공통옵션</option>";
+        // 배열이기 때문에 반복문을 돌려서 각 셀렉트박스에 공통옵션을 추가
+        $("select").each(function(index) {
+            $(this).prepend(commonOption);
+        });
+
+        // TODO 3: 텍스트박스를 두 개의 셀렉트박스 사이에 추가  
+
+        // .after() : 선택한 요소 바로 뒤에 새로운 요소를 삽입
+        // .before() : 선택한 요소 바로 앞에 새로운 요소를 삽입
+        // .insertAfter() : 삽입할 요소에서 호출하며, 대상 요소 뒤에 삽입
+        // .insertBefore() : 삽입할 요소에서 호출하며, 대상 요소 앞에 삽입
+        // .prepend() : 선택한 요소의 자식 중 첫번째에 삽입
+
+        const inputBox = $("<input type='text' placeholder='입력'/>");
+        $("#selectBox").after(inputBox);
+});
+</script>
+</html>
