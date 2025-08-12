@@ -1,0 +1,42 @@
+
+<style type="text/css">
+    .orange { color: orange; }
+    .blue { color: blue; }
+    .red { color: red; }
+</style>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<body>
+    <h1>첫번째</h1>
+    <h2 id="red">두번째</h2>
+    <h3 name="blue">세번째</h3>
+    <h4 class="red">네번째</h4>
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // TODO : 두 번째 헤더의 글자 색상을 오렌지로,
+        $("#red").css("color", "orange");
+
+        // 세 번째 헤더의 글자 색상은 파랑,
+        // name 속성을 가지고 오고 싶으면 해당 태그에 name 속성을 추가하고 [name='속성값'] 형식으로 긁어옴
+        $("h3[name='blue']").css("color", "blue");
+
+        // 네 번째 헤더의 글자 색상은 검은색으로 변경
+        $(".red").css("color", "black");
+
+        // 첫 번째 헤더를 클릭할 때마다 글자 색상이
+        // 검은색과 빨간색으로 반복 변경
+
+       // $("h1").css("color")로 자바스크립트/제이쿼리에서 읽으면
+       // 브라우저가 내부적으로 변환한 컴퓨티드 스타일(computed style) 값을 반환하는데
+       // 이때는 보통 rgb(r, g, b) 형태로 나옴.
+        $("h1").click(function() {
+            if($("h1").css("color") === "rgb(0, 0, 0)") {
+                $("h1").css("color", "rgb(255, 0, 0)");
+            } else if($("h1").css("color") === "rgb(255, 0, 0)") {
+                $("h1").css("color", "rgb(0, 0, 0)");
+            }
+        }); 
+      
+    });
+</script>
