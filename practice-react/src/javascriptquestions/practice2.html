@@ -1,0 +1,169 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<body>
+<h2>jQuery Attribute 셀렉터</h2>
+<p>jQuery Attribute 셀렉터 테스트</p>
+<div id="targets">
+    <input type="text" name="case1" value="jQuery"/><br/>
+    <input type="text" name="case2" value="jQuery 셀렉터"/><br/>
+    <input type="text" name="case3" value="jQuery 셀렉터 테스트"/><br/>
+    <input type="text" name="case4" value="셀렉터 테스트"/><br/>
+    <input type="text" name="case5" value="셀렉터테스트"/><br/>
+    <input type="text" name="case6" value="테스트"/><br/>
+</div>
+<div>
+    <button type="button" id="button1">name속성을 가짐</button>
+    <button type="button" id="button2">'jQuery' 일치</button>
+    <button type="button" id="button3">'jQuery' 미일치</button>
+    <button type="button" id="button4">'셀렉터' 단어 포함</button>
+    <button type="button" id="button5">'셀렉터' 포함</button>
+    <button type="button" id="button6">'셀렉터'로 시작</button>
+    <button type="button" id="button7">'셀렉터'로 끝남</button>
+    <button type="button" id="btn_clear">clear</button>
+</div>
+</body>
+<script type="text/javascript">
+        $(document).ready(function () {
+            //JavaScript 형식으로 구현
+            // input 요소를 document.querySelectorAll 로 긁어올 경우 input 요소들 전체가 긁어와짐(nodeList 로 긁어와짐, 배열과 유사한 컬렉션)
+            // 해당 컬렉션은 스타일이나 속성을 바로 변경할 수 없다.
+            // 반복문을 돌리지 않고 input 색상이나 특정 요소들을 변경할 경우, 변경 되지 않음.(이미 배열로 값들을 긁어왔기 때문)
+            // 따라서 하나의 input 요소의 특정 속성을 바꾸고 싶어도 for 문을 돌린 다음, 조건을 걸어서 특정 value 나 id 값을 가져와서 변경해야 함.
+            
+            // [clear] : inputBox에 색상 초기화 처리
+            // let btnClear = document.getElementById("btn_clear");
+            // btnClear.onclick = function () {
+            //     document.querySelectorAll("input").forEach(function (el) {
+            //         el.style.backgroundColor = "";
+            //     });
+            //     console.log("모든 input 요소의 색상이 초기화되었습니다.");
+            // };
+            
+            // [name속성을 가짐] : inputBox에 name속성이 있으면 빨간색으로 바탕화면 처리
+            // let btn1 = document.getElementById("button1");
+            // btn1.onclick = function () {
+            //     document.querySelectorAll("input[name]").forEach(function (el) {
+            //         el.style.backgroundColor = "red";
+            //         console.log("name 속성을 가진 input 요소가 선택되었습니다.");
+            //     });
+            // };
+    
+            // ['jQuery' 일치] : inputBox에 value속성에 'jQuery'만 있으면 빨간색으로 바탕화면 처리
+            // let btn2 = document.getElementById("button2");
+            // btn2.addEventListener("click", function () {
+            //     if (document.querySelectorAll("input[value='jQuery']")) {
+            //         document.querySelectorAll("input[value='jQuery']").forEach(function (el) {
+            //             el.style.backgroundColor = "red";
+            //             console.log("'jQuery'와 일치하는 input 요소가 선택되었습니다.");
+            //         });
+            //     }
+            // });
+
+            // ['jQuery' 미일치] : inputBox에 value속성에 'jQuery'가 없으면 빨간색으로 바탕화면 처리
+            // let btn3 = document.getElementById("button3");
+            // btn3.onclick = function () {
+            //    document.querySelectorAll("input").forEach(function (el) {
+            //         if (el.value !== "jQuery") {
+            //             el.style.backgroundColor = "red";
+            //             console.log("'jQuery'와 일치하지 않는 input 요소가 선택되었습니다.");
+            //         }
+            //     });
+            // };
+
+            // ['셀렉터' 단어 포함] : inputBox에 value속성에 '셀렉터' 단어가 포함되면 빨간색으로 바탕화면 처리
+            // let btn4 = document.getElementById("button4");
+            // btn4.onclick = function () {
+            //     document.querySelectorAll("input").forEach(function (el) {
+            //         if (el.value.includes("셀렉터")) {
+            //             el.style.backgroundColor = "red";
+            //             console.log("'셀렉터' 단어가 포함된 input 요소가 선택되었습니다.");
+            //         }
+            //     });
+            // }
+
+            // ['셀렉터' 포함] : inputBox에 value속성에 '셀렉터'가 포함되어 있으면 빨간색으로 바탕화면 처리
+            // let btn5 = document.getElementById("button5");
+            // btn5.onclick = function () {
+            //     document.querySelectorAll("input").forEach(function (el) {
+            //         if(el.value.includes("셀렉터")) {
+            //             el.style.backgroundColor = "red";
+            //             console.log("'셀렉터'가 포함된 input 요소가 선택되었습니다.");
+            //         }
+            //     });
+            // }
+
+            // ['셀렉터'로 시작] : inputBox에 value속성에 '셀렉터'로 시작하면 빨간색으로 바탕화면 처리
+            // let btn6 = document.getElementById("button6");
+            // btn6.onclick = function () {
+            //     document.querySelectorAll("input");
+            //     for(let i = 0; i < document.querySelectorAll("input").length; i++) {
+            //         if (document.querySelectorAll("input")[i].value.startsWith("셀렉터")) {
+            //             document.querySelectorAll("input")[i].style.backgroundColor = "red";
+            //             console.log("'셀렉터'로 시작하는 input 요소가 선택되었습니다.");
+            //         }
+            //     }
+            // }
+
+            // ['셀렉터'로 끝남] : inputBox에 value속성에 '셀렉터'로 끝나면 빨간색으로 바탕화면 처리
+            // let btn7 = document.getElementById("button7");
+            // btn7.onclick = function () {
+            //     document.querySelectorAll("input").forEach(function (el) {
+            //         if (el.value.endsWith("셀렉터")) {
+            //             el.style.backgroundColor = "red";
+            //             console.log("'셀렉터'로 끝나는 input 요소가 선택되었습니다.");
+            //         }
+            //     });
+            // }
+
+            //JQuery형식으로 구현
+
+            // [clear] : inputBox에 색상 초기화 처리
+            // # : id 선택, . : 클래스 선택
+            $("#btn_clear").on("click", () => {
+                $("input").css("background-color", "");
+            });
+
+            // [name속성을 가짐] : inputBox에 name속성이 있으면 빨간색으로 바탕화면 처리
+            $("#button1").on("click", () => {
+                if($("input[name]").length > 0) {
+                    $("input").css("background-color", "red");
+                }
+            });
+
+            // ['jQuery' 일치] : inputBox에 value속성에 'jQuery'만 있으면 빨간색으로 바탕화면 처리
+            $("#button2").on("click", () => {
+                if($("input[value='jQuery']".length > 0)) {
+                    $("input[value='jQuery']").css("background-color", "red");
+                }
+            });
+
+            // ['jQuery' 미일치] : inputBox에 value속성에 'jQuery'가 없으면 빨간색으로 바탕화면 처리
+            $("#button3").on("click", () => {
+                $("input[value!='jQuery']").css("background-color", "red");
+            });
+
+            // ['셀렉터' 단어 포함] : inputBox에 value속성에 '셀렉터' 단어가 포함되면 빨간색으로 바탕화면 처리
+            // *= : 포함
+            $("#button4").on("click", () => {
+                $("input[value*='셀렉터']").css("background-color", "red");
+            });
+
+            // ['셀렉터' 포함] : inputBox에 value속성에 '셀렉터'가 포함되어 있으면 빨간색으로 바탕화면 처리
+            // *= : 포함
+            // ^= : 시작 , $= : 끝
+            // *= : 포함
+            $("#button5").on("click", () => {   
+                $("input[value*='셀렉터']").css("background-color", "red");
+            });
+
+            // ['셀렉터'로 시작] : inputBox에 value속성에 '셀렉터'로 시작하면 빨간색으로 바탕화면 처리
+            $("#button6").on("click", () => {  
+                $("input[value^='셀렉터']").css("background-color", "red");
+            }); 
+            
+            // ['셀렉터'로 끝남] : inputBox에 value속성에 '셀렉터'로 끝나면 빨간색으로 바탕화면 처리
+              $("#button7").on("click", () => {   
+                $("input[value$='셀렉터']").css("background-color", "red");
+            });
+
+        });
+</script>

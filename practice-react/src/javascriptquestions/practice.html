@@ -1,0 +1,31 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+    </head>
+    <body>
+        <h1 class="item">안녕하세요.</h1>
+        <h1 class="item select">반갑습니다.</h1>
+        <h1 class="item">좋은하루 되세요.</h1>
+    </body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //JavaScript 형식으로 구현
+            let item = document.getElementsByClassName("item");
+            for (let i = 0; i < item.length; i++) {
+                item[i].style.color = "red";
+            }
+        
+            let itemSelect = document.getElementsByClassName("select");
+            for (let i = 0; i < itemSelect.length; i++) {
+                itemSelect[i].style.color = "grey";
+            }
+
+            //JQuery형식으로 구현
+            // $(".item").css("color", "red");
+            // $(".select").css("color", "grey");
+
+        });
+    </script>
+    </html>

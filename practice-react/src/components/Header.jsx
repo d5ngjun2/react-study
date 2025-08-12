@@ -12,7 +12,7 @@ const Header = () => {
     <HeaderContent>
       <HeaderLink to="/">
         <Item>
-          <h2>Practice React⚛️</h2>
+          <h2>My Application</h2>
         </Item>
       </HeaderLink>
       <ItemGroup>
