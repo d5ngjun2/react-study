@@ -1,0 +1,29 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<body>
+    <h2>첫번째</h2>
+    <h2>두번째</h2>
+    <h2>세번째</h2>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // TODO: 모든 <h2> 태그에 click 핸들러 등록
+        // 이벤트가 발생되면 해당 텍스트 뒤에 별표(*)를 붙임 
+
+        // 전체 h2 태그들
+        let h2Tag = $("h2");
+        // h2 태그의 첫번째 값
+        let firstH2Tag = $("h2").first();
+
+        h2Tag.on("click", function() {
+            $(this).append("*");
+        })
+
+        setInterval(function () {
+            // TODO : 첫 번째 h2 태그의 click 이벤트 강제 발생
+            // click() : 클릭 강제 실행 함수 이벤트
+            firstH2Tag.click();
+        }, 1000);
+    });
+
+</script>

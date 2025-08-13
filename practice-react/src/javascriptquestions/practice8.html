@@ -1,0 +1,42 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<body>
+    <input type="checkbox" id="allCheck"/>
+    <label><b>All</b></label>
+    <div id="checkItem">
+        <input type="checkbox"/><label>옵션1</label><br/>
+        <input type="checkbox"/><label>옵션2</label><br/>
+        <input type="checkbox"/><label>옵션3</label><br/>
+    </div>
+    <hr/>
+  <h5>입력 : </h5>
+    <textarea id="textArea" rows="5" cols="68"></textarea>
+    <div id="divArea">
+    </div>
+
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // TODO1 : All 체크박스를 체크/해제 하면
+
+        let allCheckBox = $("#allCheck");
+        allCheckBox.on("click", function() {
+            // .prop() : dom 속성 상태를 읽어옴
+            // 체크박스/라디오버튼/disabled/selected 같은 논리적 상태에 사용
+            // .val() 이랑 다름 -> val 은 주로 입력한 값을 가져옴
+            let isChecked = $(this).prop("checked");
+            $("#checkItem input[type=checkbox]").prop("checked", isChecked);
+        })
+
+        // TODO2: textArea의 텍스트가 변경되면 내용을 divArea에 복사
+        let textBox = $("#textArea");
+        let divArea = $("#divArea");
+
+        // blur : 포커스를 잃을 때 발생
+        textBox.on("blur", function() {
+            divArea.text(textBox.val());
+        })
+    
+
+});
+
+</script>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style type="text/css">
+  div{height: 180px; background: rgba(0,0,0,.5)}
+  div > div{height: 120px}
+  div > div > div{height: 60px; color: #fff}
+</style>
+</head>
+
+<body>
+  <div class="one">
+      <div class="two">
+        <div class="three">
+        </div>
+      </div>
+    </div>
+</body>
+<script type="text/javascript">
+    /*
+        문제 
+        아래 소스를 실행하였을 때, 클릭한 이벤트가 상위이벤트로 전파 되는 것을 볼 수 있다. 
+        1.1 이러한 현상을 무엇이라 하는지 기술하라 : 이벤트 버블링
+        1.2 아래 소스에서 클릭한 이벤트만 작동하도록 수정 하라.
+    */
+
+    /*
+        이벤트 전파는 html 구조상 당연한 현상이다. 자식 요소가 부모 요소 안에 위치해있다고 가정할 때,
+        자식요소에 있는 div 영역을 클릭한 것은 결국 부모 요소의 div 영역을 클릭한 것 과 동일하기 때문이다.
+        또한 이런 특징 덕분에 이벤트 등록 코드를 줄일 수 있는 장점도 있다. 한 ul 안에 몇번째 리스트를 클릭하든 이벤트를 발생시키고 싶을 때,
+        간단하게 부모 요소인 ul 태그에만 on 이벤트를 걸어버리면 된다. -> 이는 "이벤트 위임" 이라고 부른다.
+
+        부모 요소에 있는 자식 요소만 이벤트를 발생시키고 싶을 때는 e.stopPropagation() 메소드를 사용하면 된다.
+        해당 메소드를 호출하면 버블링 설정에 따라 현재 요소에서 상위 요소로 가는 이벤트 전파를 막을 수 있다.
+        여기서 e 이벤트 객체를 담고 있는 매개변수로, 클릭한 요소 정보(e.target), 좌표, 기본 동작 취소 등 이벤트 관련 정보를 담고 있다.
+        따라서 e.stopPropagation() 같은 함수를 이 이벤트 객체를 통해 사용 가능하다.
+
+        복잡하지만 좀더 세심하게 이벤트 핸들러를 컨트롤하고 싶다면, 직접 조건 분기를 통해 일일히 지정해 줄 수 있다.
+        예를 들어 이벤트 전파를 이용해 html의 body에만 이벤트를 등록하고, 어느 요소의 영역을 클릭 하더라도 버블링을 통해 body의 이벤트가 호출되게 되는데, 
+        이때 콜백 함수의 매개변수 e (event) 를 이용해 현재 호출된 타겟의 정보를 가져와 비교함으로써 제어가 가능한 원리이다.
+        e.target 은 실제 이벤트가 걸린 DOM 엘리먼트 객체이고, 그 안의 tagName, clasName, id 속성을 통해 태그의 정보를 분류할 수 있다.
+    */
+
+  $(document).ready(function () {
+    $('.one').on('click',function(ev){
+      alert('one');
+      // e.stopPropagation() 메소드 사용 -> 이벤트 버블링 방지
+      ev.stopPropagation();
+    });
+
+    $('.two').on('click',function(ev){
+      alert('two');
+      // e.stopPropagation() 메소드 사용 -> 이벤트 버블링 방지
+      ev.stopPropagation();
+    });
+    
+    $('.three').on('click',function(ev){
+      alert('three');
+      // e.stopPropagation() 메소드 사용 -> 이벤트 버블링 방지
+      ev.stopPropagation();
+    });
+});
+
+</script>
+</html>

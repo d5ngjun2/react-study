@@ -1,0 +1,27 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<body>
+    <div>
+        <h2>첫번째 강의</h2>
+        <p>자바스크립트 기초</p>
+    </div>
+    <div>
+        <h2>두번째 강의</h2>
+        <p>jQuery</p>
+    </div>
+    <div>
+        <h2>세번째 강의</h2>
+        <p>nodeJs</p>
+    </div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("div").on("click",function () {
+           // TODO 1: h2, p 텍스트 호출
+           let h2Text = $(this).find("h2").text();
+           let pText = $(this).find("p").text();
+           // TODO 2: alert창 이벤트
+           alert(h2Text);
+           alert(pText);
+        });
+    });
+</script>

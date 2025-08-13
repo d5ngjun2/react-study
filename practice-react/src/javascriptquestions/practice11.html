@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+</head>
+ 
+<body>
+</body>
+<script type="text/javascript">
+  $(document).ready(function () {
+    
+    function varTest(){
+        var a = 1;
+        if (true) { 
+            var a = 5;
+        } 
+        console.log("varTest:"+a); 
+    }
+    
+    function letTest(){
+        let  a = 1; 
+        if (true) { 
+            let  a = 5; 
+        } 
+        console.log("letTest:"+a); 
+    }
+
+    varTest();
+    letTest();
+
+    /*
+        5,1 출력
+        var 은 함수 스코프 변수로, 한 함수 내에서 여러번 재정의 가능한 변수임
+        또한 if 같은 블록 안에서도 값이 변경되어도 블록 밖에 있는 변수에 영향을 끼침
+        따라서 if 조건문이 true 라 실행되므로 a 는 5 가됨
+
+        let 은 블록 변수임. 한 블록 내에서 선언 된 let 변수는 무조건 해당 블록 안에서만 값이 할당됨
+        따라서 if 문이 정상적으로 실행 되어도, if 문 안에서의 값은 5로 저장 되지만, 
+        if 문을 탈출해서 출력 시키는 해당 함수의 콘솔은 출력값이 let a = 1;
+        1 이 출력되게 됨.
+    */
+});
+
+</script>
+</html>
