@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+</head>
+<body>
+<input type="text" id="input_num1" />
+<select id="operator">
+  <option value="add">더하기</option>
+  <option value="sub">빼기</option>
+  <option value="mul">곱하기</option>
+  <option value="div">나누기</option>
+  <option value="mod">나머지</option>
+  <option value="pow">의 n승</option>
+</select>
+<input type="text" id="input_num2" />
+<button onclick="calculate();">계산</button>
+<input type="text" id="result" />
+</body>
+<script type="text/javascript">
+
+    // 전역변수 
+    let result;
+    /*
+       codesnippet 은 무엇일까?
+        codesnippet 은 코드 조각을 의미하며, 특정 기능을 수행하는 코드의 일부분을 말한다.
+        일반적으로 코드 스니펫은 재사용 가능한 코드 블록으로, 특정 작업이나 기능을 수행하기 위해 작성된다.
+        예를 들어, 자바스크립트에서 특정 기능을 수행하는 함수를 작성할 때,
+        해당 함수의 코드 블록을 코드 스니펫이라고 할 수 있다.    
+        코드 스니펫은 개발자가 자주 사용하는 코드 패턴을 저장하고 재사용할 수 있도록 도와준다.
+    */
+
+    // TODO 1: 계산기 모듈을  CodeSnippet형식으로 구현
+     
+    function calculater(num1, num2, optionType) {
+        switch (optionType){
+            case "add": 
+                result = num1 + num2; 
+                break;
+            case "sub": 
+                result = num1 - num2; 
+                break;
+            case "mul": 
+                result = num1 * num2; 
+                break;
+            case "div": 
+                result = num1 / num2
+                break;
+            case "mod": 
+                result = num1 % num2; 
+                break;
+            case "pow": 
+                // Math.pow() 는 첫번째 매개변수의 두번째 매개변수 만큼 거듭제곱을 계산해주는 함수
+                // 예를 들어, Math.pow(2, 3) 은 2의 3승인 8을 리턴한다.
+                result = Math.pow(num1, num2); 
+                break;
+            default: result = null;
+        }
+    $("#result").val(result);
+}
+  
+  function calculate() {
+  // TODO 2: 계산버튼 클릭 시, input_num1 와 input_num2 의 값을 계산하여, 결과값  result에 출력  
+
+    // Number() 함수는 문자열을 숫자로 변환해주는 함수
+    // 숫자로 안 바꿔주면 문자열로 계산되어 잘못된 결과가 나옴
+    let num1 = Number($("#input_num1").val());
+    let num2 = Number($("#input_num2").val());
+    let optionType = $("#operator").val();
+    calculater(num1,num2, optionType);
+  }
+ 
+</script>
+</html>
+

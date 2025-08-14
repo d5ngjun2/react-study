@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.js"></script>
+</head>
+ 
+<body>
+</body>
+<script type="text/javascript">
+    /*
+        문제 
+        아래 소스를 실행하였을 때, 'a'값이 고정되고, 'b'값을 대입하여 결과를 리턴한다. 
+        1.1 이러한 현상을 무엇이라 하는지 기술하라 : 클로저
+        1.2 현상이 나오는 이유를 기술하라.
+
+        - 자바스크립트 의 클로저란 함수가 실행된 후에도 그 함수가 선언될 당시의 변수를 기억하고 접근할 수 있는 기능을 말한다.
+        예를 들어, closureTest(a) 함수가 실행되면, 내부 함수를 return 한다.
+        이때 내부 함수는 closureTest() 함수의 실행할 때 있었던 매개변수 a 를 계속 참조할 수 있다.
+        이렇게 return 된 내부 함수는 외부 함수 실행이 끝난 후에도 a 의 값을 기억하므로
+        이후에 내부함수를 호출할 때도 처음 설정된 a 의 값이 유지된다.
+
+        a의 값이 고정되는 이유는 closureTest() 함수가 내부 함수를 return 하고,
+        처음 함수를 실행할 때 존재했던 매개변수 a 는 계속 참조되기 때문이다.
+
+        따라서 let test = closureTest(1); 의 매개변수 1 은 a 의 값으로 들어가고 (계속 참조될 매개변수 값)
+        이후에 alert 로 실행되는 함수들의 매개변수는 b 쪽인 2 와 3 으로 들어가게 된다.
+        출력은
+        alert(test(2)); 는 1 + 2 인 "3" 이 출력되고
+        alert(test(3)); 는 1 + 3 인 "4" 가 출력된다.
+    */
+$(document).ready(function () {
+    function closureTest(a){
+        return function(b){
+            return a + b;
+        }
+    }
+    let test = closureTest(1);
+    alert(test(2));
+    alert(test(3));
+});
+
+</script>
+</html>
