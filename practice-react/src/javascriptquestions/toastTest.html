@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Toast Example with Icons</title>
+
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* Toast 컨테이너 */
+#toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Toast 기본 스타일 */
+.toast {
+  min-width: 250px;
+  max-width: 350px;
+  padding: 16px 20px;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  transform: translateX(100%);
+  transition: opacity 0.5s, transform 0.5s;
+  font-family: Arial, sans-serif;
+}
+
+/* Toast 표시 시 */
+.toast.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 타입별 색상 */
+.toast.success { background-color: #4caf50; }
+.toast.error { background-color: #f44336; }
+.toast.info { background-color: #2196f3; }
+
+/* 아이콘 스타일 */
+.toast i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+/* 닫기 버튼 */
+.toast button.close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: auto;
+}
+</style>
+</head>
+<body>
+
+<button onclick="showToast('작업이 성공적으로 완료되었습니다!', 'success')">Success Toast</button>
+<button onclick="showToast('에러가 발생했습니다.', 'error')">Error Toast</button>
+<button onclick="showToast('정보 메시지입니다.', 'info')">Info Toast</button>
+
+<div id="toast-container"></div>
+
+<script>
+function showToast(message, type = "info") {
+  const container = document.getElementById("toast-container");
+
+  // 아이콘 결정
+  let iconClass = "";
+  switch(type) {
+    case "success": iconClass = "fa-solid fa-circle-check"; break;
+    case "error": iconClass = "fa-solid fa-circle-exclamation"; break;
+    case "info": iconClass = "fa-solid fa-circle-info"; break;
+  }
+
+  // Toast 요소 생성
+  const toast = document.createElement("div");
+  toast.className = `toast ${type}`;
+  toast.innerHTML = `<i class="${iconClass}"></i><span>${message}</span>`;
+
+  // 닫기 버튼 추가
+  const closeBtn = document.createElement("button");
+  closeBtn.innerHTML = "&times;";
+  closeBtn.className = "close-btn";
+  closeBtn.onclick = () => container.removeChild(toast);
+  toast.appendChild(closeBtn);
+
+  // 컨테이너에 추가
+  container.appendChild(toast);
+
+  // 애니메이션 적용
+  setTimeout(() => toast.classList.add("show"), 100);
+
+  // 3초 후 자동 제거
+  setTimeout(() => {
+    toast.classList.remove("show");
+    setTimeout(() => {
+      if(container.contains(toast)) container.removeChild(toast);
+    }, 500);
+  }, 3000);
+}
+</script>
+
+</body>
+</html>

@@ -39,13 +39,13 @@
                 result = num1 + num2; 
                 break;
             case "sub": 
-                result = num1 - num2; 
+                result = num1 - num2;   
                 break;
             case "mul": 
                 result = num1 * num2; 
                 break;
             case "div": 
-                result = num1 / num2
+                result = num1 / num2;
                 break;
             case "mod": 
                 result = num1 % num2; 
@@ -55,7 +55,8 @@
                 // 예를 들어, Math.pow(2, 3) 은 2의 3승인 8을 리턴한다.
                 result = Math.pow(num1, num2); 
                 break;
-            default: result = null;
+            default: 
+                result = null;
         }
     $("#result").val(result);
 }

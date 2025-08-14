@@ -149,18 +149,18 @@
 
             // ['셀렉터' 포함] : inputBox에 value속성에 '셀렉터'가 포함되어 있으면 빨간색으로 바탕화면 처리
             // *= : 포함
-            // ^= : 시작 , $= : 끝
-            // *= : 포함
             $("#button5").on("click", () => {   
                 $("input[value*='셀렉터']").css("background-color", "red");
             });
 
             // ['셀렉터'로 시작] : inputBox에 value속성에 '셀렉터'로 시작하면 빨간색으로 바탕화면 처리
+            // ^= : 시작 , $= : 끝
             $("#button6").on("click", () => {  
                 $("input[value^='셀렉터']").css("background-color", "red");
             }); 
             
             // ['셀렉터'로 끝남] : inputBox에 value속성에 '셀렉터'로 끝나면 빨간색으로 바탕화면 처리
+            // ^= : 시작 , $= : 끝
               $("#button7").on("click", () => {   
                 $("input[value$='셀렉터']").css("background-color", "red");
             });

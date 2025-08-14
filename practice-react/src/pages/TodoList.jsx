@@ -12,6 +12,7 @@ const TodoList = () => {
         <TodoCard>
           <h2>오늘 할 일</h2>
           <ul>
+            <input type="checkbox" id="task1" />
             <li>React 프로젝트 구조 이해하기</li>
             <li>styled-components 사용법 익히기</li>
             <li>리액트 라우터로 페이지 이동 구현하기</li>
@@ -49,6 +50,11 @@ const TodoCard = styled.div`
   border: 1px solid #ccc;
   border-radius: 10px;
   margin: 10px;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
 `;
 
 const BackButton = styled.button`
