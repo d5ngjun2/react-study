@@ -28,7 +28,7 @@ const weatherIcons = {
 const regions = [
   { name: "서울", lat: 37.5665, lon: 126.978 },
   { name: "경기", lat: 37.4138, lon: 127.5183 },
-  { name: "부산", lat: 35.1796, lon: 129.0756 }, // 예시 추가
+  { name: "부산", lat: 35.1796, lon: 129.0756 },
 ];
 
 const WeatherWidget = () => {
@@ -80,7 +80,6 @@ const WeatherWidget = () => {
   );
 };
 
-// 스타일링은 기존과 동일
 const WidgetContainer = styled.div`
   display: flex;
   flex-direction: column;

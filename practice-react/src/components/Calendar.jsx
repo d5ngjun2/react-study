@@ -37,8 +37,7 @@ const Calendar = () => {
     </CalendarContainer>
   );
 };
-
-// 스타일링
+  
 const CalendarContainer = styled.div`
   width: 300px;
   padding: 15px;
